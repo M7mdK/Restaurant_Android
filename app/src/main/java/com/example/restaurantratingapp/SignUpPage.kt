@@ -14,6 +14,7 @@ import com.google.firebase.database.FirebaseDatabase
 
 class SignUpPage : AppCompatActivity() {
 
+    lateinit var fullName: EditText
     lateinit var signupEmail: EditText
     lateinit var signupPassword : EditText
     lateinit var signupButton: Button
@@ -30,15 +31,25 @@ class SignUpPage : AppCompatActivity() {
         database = FirebaseDatabase.getInstance()
         dbRef = database.reference
 
+        fullName = findViewById(R.id.fullName) as EditText
         signupEmail = findViewById(R.id.signupEmailEntry) as EditText
         signupPassword = findViewById(R.id.signupPasswordEntery) as EditText
         signupButton = findViewById(R.id.signupButton) as Button
 
         signupButton.setOnClickListener{
-            auth.createUserWithEmailAndPassword(signupEmail.text.toString(), signupPassword.text.toString()).addOnCompleteListener {
-                Toast.makeText(this, "Registered Successfully!" , Toast.LENGTH_SHORT).show()
-                val intent = Intent(this, MainActivity::class.java)
-                startActivity(intent)
+            auth.createUserWithEmailAndPassword(signupEmail.text.toString(), signupPassword.text.toString()).addOnCompleteListener { task: Task<AuthResult> ->
+                if (task.isSuccessful){
+                val userId = auth.currentUser?.uid
+                    if (userId != null) {
+                        dbRef.child("users").child(userId).child("FullName").setValue(fullName.text.toString()).addOnSuccessListener() {
+                            //Toast.makeText(this, "Registered Successfully!" , Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this, "Registered " + userId , Toast.LENGTH_SHORT).show()
+                            val intent = Intent(this, MainActivity::class.java)
+                            startActivity(intent)
+                        }
+                    }
+
+                }
             }
 
         }

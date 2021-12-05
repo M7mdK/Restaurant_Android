@@ -21,13 +21,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".LoginPage"></activity>
-
-        <activity android:name=".SignUpPage"></activity>
-
-        <activity android:name=".HomePage"></activity>
-        <activity android:name=".RestaurantSpecificPage"></activity>
+        <activity android:name=".LoginPage" />
+        <activity android:name=".SignUpPage" />
+        <activity android:name=".HomePage" />
+        <activity android:name=".RestaurantSpecificPage" />
 
     </application>
 
