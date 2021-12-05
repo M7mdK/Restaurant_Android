@@ -26,58 +26,34 @@
         android:id="@+id/loginEmailEntry"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
+        android:layout_marginTop="8dp"
 
+        android:ems="10"
         android:hint="@string/email"
         android:importantForAutofill="no"
         android:inputType="textEmailAddress"
         android:text="Hamied@example.com"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/EnterEamilText"
+        app:layout_constraintTop_toBottomOf="@+id/loginPageTitle"
         tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
     <EditText
         android:id="@+id/loginPasswordEntery"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:ems="10"
         android:hint="@string/password"
-        android:text="123456"
         android:importantForAutofill="no"
 
         android:inputType="textPassword"
+        android:text="123456"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.527"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/PasswordText"
+        app:layout_constraintTop_toBottomOf="@+id/loginEmailEntry"
         tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
-
-    <TextView
-        android:id="@+id/EnterEamilText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="@string/enter_e_mail"
-        android:textSize="20sp"
-
-        android:textStyle="normal|bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginPageTitle" />
-
-    <TextView
-        android:id="@+id/PasswordText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="@string/enter_password"
-        android:textSize="20sp"
-
-        android:textStyle="normal|bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginEmailEntry" />
 
     <Button
         android:id="@+id/loginButton"
