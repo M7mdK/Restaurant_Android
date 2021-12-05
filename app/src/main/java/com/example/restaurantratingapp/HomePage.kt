@@ -60,12 +60,17 @@ class HomePage : AppCompatActivity() {
         // as you specify a parent activity in AndroidManifest.xml.
         return when (item.itemId) {
             R.id.myAccount -> {
-                val intent = Intent(this, LoginPage::class.java)
+                val intent = Intent(this, UserAccount::class.java)
                 startActivity(intent)
                 true
             }
             R.id.logout -> {
-                //remove user from sp
+                val sharedPref = getSharedPreferences(SHARED_PREF , Context.MODE_PRIVATE)
+                var editor = sharedPref.edit()
+                editor.remove("Email")
+                editor.remove("Pass")
+                editor.remove("UserID")
+                Toast.makeText(this, "Logging Out", Toast.LENGTH_SHORT).show()
                 val intent = Intent(this, LoginPage::class.java)
                 startActivity(intent)
                 true
