@@ -23,7 +23,7 @@ class CommentAdapter(private val dataSet: ArrayList<Comment>) :
         init {
             // Define click listener for the ViewHolder's View.
             textUserName = view.findViewById(R.id.commentUserName)
-            commentTextView = view.findViewById(R.id.commentText)
+            commentTextView = view.findViewById(R.id.resName)
             buttonEdit = view.findViewById(R.id.editCommentButton)
             view.setOnClickListener {
                 Toast.makeText(view.context,"hellooo",Toast.LENGTH_SHORT).show()

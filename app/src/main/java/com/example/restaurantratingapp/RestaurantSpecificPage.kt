@@ -26,6 +26,7 @@ class RestaurantSpecificPage : AppCompatActivity() {
     lateinit var addCommentButton: Button
     // database reference to the Firebase
     private lateinit var database: DatabaseReference
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.restaurant_specific_page)
