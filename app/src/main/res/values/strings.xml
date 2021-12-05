@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">Restaurant Rating App</string>
+    <string name="restaurant_rating_website">Restaurant Rating Website</string>
+    <string name="dislike">Dislike</string>
+    <string name="search">Search</string>
+    <string name="filter">Filter</string>
+    <string name="like">Like</string>
+    <string name="comment">Comment</string>
+    <string name="dominoz">dominoz</string>
+    <string name="mac">MAC</string>
+    <string name="papajohns">papajohns</string>
+    <string name="location">Location</string>
+    <string name="add_comment">Add Comment</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="kfc">KFC</string>
+    <string name="goldstar">goldstar</string>
+    <string name="restaurant_rating_app">Restaurant Rating App</string>
+    <string name="sign_up">Sign up</string>
+    <string name="sign_in">Sign in</string>
+    <string name="guest">Guest</string>
+    <string name="sign_up_page">Sign Up Page</string>
+    <string name="enter_e_mail">Enter E-Mail:</string>
+    <string name="enter_password">Enter Password:</string>
+    <string name="signup">SignUp</string>
+    <string name="email">email</string>
+    <string name="password">password</string>
+    <string name="login_page">Login Page</string>
+    <string name="login">Login</string>
+
+
+</resources>

@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "627135895524",
+    "project_id": "resaturantratingapp",
+    "storage_bucket": "resaturantratingapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:627135895524:android:96c5fa2e3a9553cba459f1",
+        "android_client_info": {
+          "package_name": "com.example.restaurantratingapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "627135895524-sghhfcbdsg79acm3ilkh79jvcftn3rpp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.restaurantratingapp",
+            "certificate_hash": "e54e6db944aeb97a3d8ca6667942bf6ab486b10d"
+          }
+        },
+        {
+          "client_id": "627135895524-eumpns3mv7q83oc3jt7qbh2q8f947smc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBQEm4MWPB8BgQEoBMyHszmoAW6dSzwfpE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "627135895524-eumpns3mv7q83oc3jt7qbh2q8f947smc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
