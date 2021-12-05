@@ -20,7 +20,7 @@ class RestaurantAdapter(private val resImagesList: Array<Int> , private val resN
      * Provide a reference to the type of views that you are using
      * (custom ViewHolder).
      */
-    class ViewHolder(view: View , activity: HomePage , resNamesList: Array<String>) : RecyclerView.ViewHolder(view) {
+    class ViewHolder(view: View , activity: HomePage , resNamesList: Array<String> , resImagesList: Array<Int>) : RecyclerView.ViewHolder(view) {
         val resImage: ImageView
         val resName: TextView
 
@@ -33,6 +33,7 @@ class RestaurantAdapter(private val resImagesList: Array<Int> , private val resN
                 Toast.makeText(view.context, "Hello " + resNamesList[adapterPosition] , Toast.LENGTH_SHORT).show()
                 val intent = Intent(view.context, RestaurantSpecificPage::class.java)
                 intent.putExtra("resName",resNamesList[adapterPosition])
+                intent.putExtra("resImage", resImagesList[adapterPosition])
                 activity.startActivity(intent)
             }
         }
@@ -44,7 +45,7 @@ class RestaurantAdapter(private val resImagesList: Array<Int> , private val resN
         val view = LayoutInflater.from(viewGroup.context)
             .inflate(R.layout.restaurant_item, viewGroup, false)
 
-        return ViewHolder(view,this.activity,resNamesList)
+        return ViewHolder(view,this.activity,resNamesList,resImagesList)
     }
 
     // Replace the contents of a view (invoked by the layout manager)
