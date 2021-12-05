@@ -35,6 +35,7 @@ class RestaurantSpecificPage : AppCompatActivity() {
         addCommentButton = findViewById(R.id.AddComment)
         database = Firebase.database.reference
 
+        // dummy data
 //        val comments: Array<Comment> = arrayOf(
 //        Comment(100,"user_1","This is the first review"),
 //        Comment(101,"user_2","This is the second review"),
@@ -44,26 +45,34 @@ class RestaurantSpecificPage : AppCompatActivity() {
 //            )
         val restaurantName = intent.getStringExtra("resName")
         val log = Logger.getLogger(MainActivity::class.java.name)
-
-        val comments:ArrayList<Comment> = ArrayList()
+        log.info("here----------------: $restaurantName")
+        var comments:ArrayList<Comment>
 
         val postListener = object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 // Get Post object and use the values to update the UI
+                comments = ArrayList()
                 for (snapshot in dataSnapshot.children) {
                     snapshot.children.forEach { user ->
                         user.children.forEach{ restaurant ->
-                            if(restaurant.key == restaurantName){
+                            log.info(restaurant.toString())
+                            if(restaurant.key.toString() == restaurantName){
                                 restaurant.children.forEach { comment ->
-                                    comments.add(Comment(comment.key.toString(),
+                                    comments.add(Comment(
                                         commentText = comment.value.toString(),
-                                        userName = user.key.toString()
-                                        ))
+                                        userId = user.key.toString(),
+                                        commentId = comment.key.toString()
+                                    ))
                                 }
                             }
                         }
                     }
                 }
+
+
+                commentAdapter = CommentAdapter(comments,database,restaurantName)
+                listComments.adapter = commentAdapter
+                listComments.setHasFixedSize(true)
                 // ...
             }
 
@@ -74,9 +83,6 @@ class RestaurantSpecificPage : AppCompatActivity() {
         }
         database.addValueEventListener(postListener)
 
-        commentAdapter = CommentAdapter(comments)
-        listComments.adapter = commentAdapter
-        listComments.setHasFixedSize(true)
 
 
         // init the user info
@@ -84,7 +90,7 @@ class RestaurantSpecificPage : AppCompatActivity() {
         var userId = sharedPref.getString("UserID","defUser")
 
         // init the add comment listener
-        initAddComment(userId,"Macdo")
+        initAddComment(userId,restaurantName)
     }
 
     private fun initAddComment(userId: String?, restaurantName: String?){
@@ -97,14 +103,20 @@ class RestaurantSpecificPage : AppCompatActivity() {
 
             // add save comment listener
 
-            val  button = commentBoxView.findViewById<Button>(R.id.saveCommentButton)
             val editText = commentBoxView.findViewById<EditText>(R.id.addCommentText)
             val commentText = editText.text
-            button.setOnClickListener {
+            commentBoxBuilder.setNegativeButton("Cancel") { dialog, whichButton ->
+                dialog.dismiss()
+            }
+            commentBoxBuilder.setPositiveButton("Save") { dialog, whichButton ->
                 Toast.makeText(this,"Clicked!! $userId",Toast.LENGTH_SHORT).show()
                 if (userId != null && restaurantName != null && commentText.toString() != "") {
-                    database.child("users").child(userId).child("restaurants")
-                        .child(restaurantName).push().setValue(commentText.toString())
+                    val isCompleted = database.child("users").child(userId)
+                        .child(restaurantName).push().setValue(commentText.toString()).isComplete
+
+                    if(isCompleted){
+                        dialog.dismiss()
+                    }
                 }
             }
             //show dialog

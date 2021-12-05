@@ -1,3 +1,3 @@
 package com.example.restaurantratingapp
 
-class Comment(var id: String, var userName: String, var commentText: String)
+class Comment(var userId: String, var commentText: String, var commentId: String)

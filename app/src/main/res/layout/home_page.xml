@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#A3BCCF"
+    android:background="@color/background"
     tools:context=".MainActivity">
 
     <androidx.recyclerview.widget.RecyclerView
@@ -15,7 +15,6 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="16dp"
-        android:background="#A3BCCF"
         android:clipToPadding="false"
         android:paddingTop="10dp"
         android:scrollbars="vertical"

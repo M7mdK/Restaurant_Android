@@ -14,7 +14,6 @@
         android:layout_marginTop="16dp"
         android:backgroundTint="#FFFFFF"
         android:text="@string/sign_up_page"
-        android:textColor="@color/black"
         android:textSize="34sp"
 
         android:textStyle="normal|bold"
@@ -32,7 +31,6 @@
         android:importantForAutofill="no"
         android:inputType="textEmailAddress"
         android:textAlignment="center"
-        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/EnterEamilText"
@@ -49,7 +47,6 @@
 
         android:inputType="textPassword"
         android:textAlignment="center"
-        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.527"
         app:layout_constraintStart_toStartOf="parent"
@@ -62,7 +59,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:text="@string/enter_e_mail"
-        android:textColor="@color/black"
         android:textSize="20sp"
 
         android:textStyle="normal|bold"
@@ -76,7 +72,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="@string/enter_password"
-        android:textColor="@color/black"
+        
         android:textSize="20sp"
 
         android:textStyle="normal|bold"

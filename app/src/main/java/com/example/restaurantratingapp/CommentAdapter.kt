@@ -7,9 +7,12 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.database.DatabaseReference
 
 
-class CommentAdapter(private val dataSet: ArrayList<Comment>) :
+class CommentAdapter(private val dataSet: ArrayList<Comment>, private val database:DatabaseReference,
+                     private val restaurantName: String?
+) :
     RecyclerView.Adapter<CommentAdapter.ViewHolder>() {
 
     /**
@@ -19,12 +22,12 @@ class CommentAdapter(private val dataSet: ArrayList<Comment>) :
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val textUserName: TextView
         val commentTextView: TextView
-        val buttonEdit: Button
+        val buttonDelete: Button
         init {
             // Define click listener for the ViewHolder's View.
             textUserName = view.findViewById(R.id.commentUserName)
             commentTextView = view.findViewById(R.id.resName)
-            buttonEdit = view.findViewById(R.id.editCommentButton)
+            buttonDelete = view.findViewById(R.id.deleteCommentButton)
             view.setOnClickListener {
                 Toast.makeText(view.context,"hellooo",Toast.LENGTH_SHORT).show()
             }
@@ -45,11 +48,20 @@ class CommentAdapter(private val dataSet: ArrayList<Comment>) :
 
         // Get element from your dataset at this position and replace the
         // contents of the view with that element
-        viewHolder.textUserName.text = dataSet[position].userName;
+        viewHolder.textUserName.text = dataSet[position].userId;
         viewHolder.commentTextView.text = dataSet[position].commentText;
-        viewHolder.buttonEdit.setOnClickListener {
-            Toast.makeText(viewHolder.buttonEdit.context,
-                "Button number: $position",Toast.LENGTH_SHORT).show()
+        viewHolder.buttonDelete.setOnClickListener {
+            val userId = dataSet[position].userId
+            val commentId = dataSet[position].commentId
+            if(this.restaurantName != null) {
+                Toast.makeText(
+                    viewHolder.buttonDelete.context,
+                    "$userId -- $restaurantName -- $commentId", Toast.LENGTH_SHORT
+                ).show()
+                this.database.child("users").child(userId).child(this.restaurantName)
+                    .child(commentId).removeValue()
+            }
+
         }
 
     }

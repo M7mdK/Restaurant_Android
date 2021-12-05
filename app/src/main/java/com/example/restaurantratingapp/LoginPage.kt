@@ -1,9 +1,11 @@
 package com.example.restaurantratingapp
 
+import android.content.ContentValues.TAG
 import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -33,8 +35,12 @@ class LoginPage : AppCompatActivity() {
             auth = FirebaseAuth.getInstance()
             val email = loginEmail.text.toString()
             val pass = loginPassword.text.toString()
+            Log.e(TAG,"hereeeeeeee")
                 auth.signInWithEmailAndPassword(email, pass).
                     addOnCompleteListener { task: Task<AuthResult> ->
+                        if(task.isCanceled){
+                            Log.e(TAG,"errrorrrr")
+                        }
                         if (task.isSuccessful){
                             val userID = auth.currentUser?.uid
                             val sharedPref =  getSharedPreferences(SHARED_PREF, Context.MODE_PRIVATE)
@@ -49,7 +55,10 @@ class LoginPage : AppCompatActivity() {
                             startActivity(intent)
 
                         }
-                    }
+                    }.addOnFailureListener { err ->
+                    Log.e(TAG,err.toString())
+                    Toast.makeText(this, "Failed" , Toast.LENGTH_SHORT).show()
+                }
 
         }
     }

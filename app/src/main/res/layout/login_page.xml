@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#C4D3DF">
+    android:background="@color/background">
 
     <TextView
         android:id="@+id/loginPageTitle"
@@ -13,7 +13,6 @@
         android:layout_marginTop="16dp"
         android:backgroundTint="#FFFFFF"
         android:text="@string/login_page"
-        android:textColor="@color/black"
         android:textSize="34sp"
 
         android:textStyle="normal|bold"
@@ -30,8 +29,8 @@
         android:hint="@string/email"
         android:importantForAutofill="no"
         android:inputType="textEmailAddress"
+        android:text="Hamied@example.com"
         android:textAlignment="center"
-        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/EnterEamilText"
@@ -43,12 +42,11 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="@string/password"
-
+        android:text="123456"
         android:importantForAutofill="no"
 
         android:inputType="textPassword"
         android:textAlignment="center"
-        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.527"
         app:layout_constraintStart_toStartOf="parent"
@@ -61,7 +59,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:text="@string/enter_e_mail"
-        android:textColor="@color/black"
         android:textSize="20sp"
 
         android:textStyle="normal|bold"
@@ -75,7 +72,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="@string/enter_password"
-        android:textColor="@color/black"
         android:textSize="20sp"
 
         android:textStyle="normal|bold"
