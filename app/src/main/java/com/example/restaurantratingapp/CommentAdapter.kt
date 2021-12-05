@@ -9,7 +9,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 
 
-class CommentAdapter(private val dataSet: Array<Comment>) :
+class CommentAdapter(private val dataSet: ArrayList<Comment>) :
     RecyclerView.Adapter<CommentAdapter.ViewHolder>() {
 
     /**
@@ -25,6 +25,9 @@ class CommentAdapter(private val dataSet: Array<Comment>) :
             textUserName = view.findViewById(R.id.commentUserName)
             commentTextView = view.findViewById(R.id.commentText)
             buttonEdit = view.findViewById(R.id.editCommentButton)
+            view.setOnClickListener {
+                Toast.makeText(view.context,"hellooo",Toast.LENGTH_SHORT).show()
+            }
         }
     }
 

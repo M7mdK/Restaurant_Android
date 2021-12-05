@@ -23,8 +23,8 @@ tools:context=".MainActivity"
 
         <ImageView
             android:id="@+id/GoldenStar"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:layout_marginTop="8dp"
             android:contentDescription="@string/kfc"
             app:srcCompat="@drawable/kfc_logo" />
@@ -47,7 +47,13 @@ tools:context=".MainActivity"
             android:text="Location: Swansea"
             android:textSize="18sp"
             android:textStyle="bold|italic"/>
+        <RatingBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:rating="4.5"
+            >
 
+        </RatingBar>
 
     </LinearLayout>
 
@@ -72,5 +78,6 @@ tools:context=".MainActivity"
         android:textSize="14sp"
         android:textStyle="bold|italic"
         android:layout_gravity="center"
+
         />
 </LinearLayout>
