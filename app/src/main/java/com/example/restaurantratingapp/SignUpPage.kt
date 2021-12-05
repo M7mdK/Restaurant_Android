@@ -1,9 +1,11 @@
 package com.example.restaurantratingapp
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
@@ -33,7 +35,11 @@ class SignUpPage : AppCompatActivity() {
         signupButton = findViewById(R.id.signupButton) as Button
 
         signupButton.setOnClickListener{
-            auth.createUserWithEmailAndPassword(signupEmail.text.toString(), signupPassword.text.toString())
+            auth.createUserWithEmailAndPassword(signupEmail.text.toString(), signupPassword.text.toString()).addOnCompleteListener {
+                Toast.makeText(this, "Registered Successfully!" , Toast.LENGTH_SHORT).show()
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+            }
 
         }
     }
