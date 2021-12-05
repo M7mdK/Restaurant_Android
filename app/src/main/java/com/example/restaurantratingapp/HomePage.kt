@@ -6,22 +6,38 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
 import android.widget.Toast
+import androidx.recyclerview.widget.RecyclerView
 
 class HomePage : AppCompatActivity() {
 
-    lateinit var m7text : TextView
+    lateinit var resList: RecyclerView
+    lateinit var resAdapter: RestaurantAdapter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.home_page)
 
-        m7text = findViewById(R.id.Title)
+            resList = findViewById(R.id.RecyclerRestaurants) as RecyclerView
 
-        val sharedPref =  getSharedPreferences(SHARED_PREF, Context.MODE_PRIVATE)
-        val s1 = sharedPref.getString("Email","defEmail")
-        val s2 = sharedPref.getString("Pass","def")
-        val s3 = sharedPref.getString("UserID","def")
+            val resNames: Array<String> = arrayOf("KFC","Macdonalds","Burger King","Dominos Pizza","Subway","Pizza Hut","Papa","DQ")
+            val resImages: Array<Int> = arrayOf(
+                R.drawable.kfc_logo,
+                R.drawable.mac_logo,
+                R.drawable.burger_king_logo,
+                R.drawable.dominos_pizza_logo,
+                R.drawable.subway_logo,
+                R.drawable.pizza_hut_logo,
+                R.drawable.papa_logo,
+                R.drawable.dq_logo
 
-        m7text.text = "Hello World,\n Email $s1 \n Pass $s2 \n UserID $s3 "
 
-    }
+            )
+
+
+            resAdapter = RestaurantAdapter(resImages , resNames,this)
+
+            resList.adapter = resAdapter
+            resList.setHasFixedSize(true)
+
+        }
 }

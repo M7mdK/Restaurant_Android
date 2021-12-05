@@ -10,6 +10,7 @@ class RestaurantSpecificPage : AppCompatActivity() {
 
     lateinit var listComments: RecyclerView
     private lateinit var commentAdapter: CommentAdapter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.restaurant_specific_page)
