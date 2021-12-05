@@ -6,9 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
-import android.widget.Button
-import android.widget.EditText
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.database.DataSnapshot
@@ -44,6 +42,20 @@ class RestaurantSpecificPage : AppCompatActivity() {
 //
 //            )
         val restaurantName = intent.getStringExtra("resName")
+        val restaurantImageId  = intent.getIntExtra("resImage",0)
+
+        // initialize image view of the restaurant
+        val resImageView  = findViewById<ImageView>(R.id.restaurantLogo)
+        resImageView.setImageResource(restaurantImageId)
+
+        val resNameTextView = findViewById<TextView>(R.id.restaurantNameDetail)
+        resNameTextView.text = restaurantName
+
+
+        // init the user info
+        val sharedPref =  getSharedPreferences(SHARED_PREF, Context.MODE_PRIVATE)
+        var userId = sharedPref.getString("UserID","defUser")
+
         val log = Logger.getLogger(MainActivity::class.java.name)
         log.info("here----------------: $restaurantName")
         var comments:ArrayList<Comment>
@@ -53,15 +65,20 @@ class RestaurantSpecificPage : AppCompatActivity() {
                 // Get Post object and use the values to update the UI
                 comments = ArrayList()
                 for (snapshot in dataSnapshot.children) {
+                    var userName = ""
                     snapshot.children.forEach { user ->
+
                         user.children.forEach{ restaurant ->
-                            log.info(restaurant.toString())
+                            if(restaurant.key.toString() == "FullName"){
+                                userName = restaurant.value.toString()
+                            }
                             if(restaurant.key.toString() == restaurantName){
                                 restaurant.children.forEach { comment ->
                                     comments.add(Comment(
                                         commentText = comment.value.toString(),
                                         userId = user.key.toString(),
-                                        commentId = comment.key.toString()
+                                        commentId = comment.key.toString(),
+                                        userName = userName
                                     ))
                                 }
                             }
@@ -70,7 +87,7 @@ class RestaurantSpecificPage : AppCompatActivity() {
                 }
 
 
-                commentAdapter = CommentAdapter(comments,database,restaurantName)
+                commentAdapter = CommentAdapter(comments,database,restaurantName,userId)
                 listComments.adapter = commentAdapter
                 listComments.setHasFixedSize(true)
                 // ...
@@ -82,12 +99,6 @@ class RestaurantSpecificPage : AppCompatActivity() {
             }
         }
         database.addValueEventListener(postListener)
-
-
-
-        // init the user info
-        val sharedPref =  getSharedPreferences(SHARED_PREF, Context.MODE_PRIVATE)
-        var userId = sharedPref.getString("UserID","defUser")
 
         // init the add comment listener
         initAddComment(userId,restaurantName)

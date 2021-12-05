@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background">
+    android:background="@color/background"
+    android:padding="10dp"
+    >
 
     <TextView
         android:id="@+id/loginPageTitle"
@@ -22,7 +24,7 @@
 
     <EditText
         android:id="@+id/loginEmailEntry"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
 
@@ -30,7 +32,6 @@
         android:importantForAutofill="no"
         android:inputType="textEmailAddress"
         android:text="Hamied@example.com"
-        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/EnterEamilText"
@@ -38,7 +39,7 @@
 
     <EditText
         android:id="@+id/loginPasswordEntery"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="@string/password"
@@ -46,7 +47,6 @@
         android:importantForAutofill="no"
 
         android:inputType="textPassword"
-        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.527"
         app:layout_constraintStart_toStartOf="parent"
@@ -81,7 +81,7 @@
 
     <Button
         android:id="@+id/loginButton"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="@string/login"

@@ -1,122 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#C4D3DF"
-    android:textAlignment="center">
+    android:orientation="vertical"
+
+    android:padding="10dp"
+    >
 
     <TextView
+
+
         android:id="@+id/signupPageTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:backgroundTint="#FFFFFF"
         android:text="@string/sign_up_page"
         android:textSize="34sp"
-
+        android:layout_gravity="center"
         android:textStyle="normal|bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="@string/enter_your_name"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/signupPageTitle" />
+        />
+
 
 
     <EditText
         android:id="@+id/fullName"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
 
         android:hint="@string/full_name"
         android:importantForAutofill="no"
         android:inputType="text"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        android:layout_marginTop="10dp"
+        />
 
     <EditText
         android:id="@+id/signupEmailEntry"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
 
+
+        android:layout_marginTop="10dp"
         android:hint="@string/email"
-        android:importantForAutofill="no"
         android:inputType="textEmailAddress"
-        android:textAlignment="center"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/EnterEamilText"
         tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
     <EditText
         android:id="@+id/signupPasswordEntery"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
         android:hint="@string/password"
-
-        android:importantForAutofill="no"
+        android:layout_marginTop="10dp"
 
         android:inputType="textPassword"
-        android:textAlignment="center"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.527"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/PasswordText"
-        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
-
-    <TextView
-        android:id="@+id/EnterEamilText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="@string/enter_e_mail"
-        android:textSize="20sp"
-        android:textStyle="normal|bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fullName" />
-
-    <TextView
-        android:id="@+id/PasswordText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="@string/enter_password"
-        
-        android:textSize="20sp"
-
-        android:textStyle="normal|bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/signupEmailEntry" />
+        />
 
     <Button
         android:id="@+id/signupButton"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="@string/signup"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/signupPasswordEntery" />
+
+        />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

@@ -22,31 +22,23 @@ tools:context=".MainActivity"
         >
 
         <ImageView
-            android:id="@+id/GoldenStar"
+            android:id="@+id/restaurantLogo"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_marginTop="8dp"
             android:contentDescription="@string/kfc"
-            app:srcCompat="@drawable/kfc_logo" />
+             />
 
         <TextView
-            android:id="@+id/textPhoneNumber"
+            android:id="@+id/restaurantNameDetail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="Phone Number: 1277"
+            android:text="Default Name"
             android:textSize="18sp"
             android:textStyle="bold|italic"
             />
 
-        <TextView
-            android:id="@+id/textLocation"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="Location: Swansea"
-            android:textSize="18sp"
-            android:textStyle="bold|italic"/>
         <RatingBar
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
