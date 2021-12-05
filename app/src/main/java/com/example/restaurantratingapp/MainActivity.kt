@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         guestButton.setOnClickListener {
-            val intentGuest = Intent(this, HomePage::class.java)
+            val intentGuest = Intent(this, RestaurantSpecificPage::class.java)
             startActivity(intentGuest)
         }
     }

@@ -43,7 +43,7 @@ class CommentAdapter(private val dataSet: Array<Comment>) :
         // Get element from your dataset at this position and replace the
         // contents of the view with that element
         viewHolder.textUserName.text = dataSet[position].userName;
-        viewHolder.commentTextView.text = dataSet[position].userName;
+        viewHolder.commentTextView.text = dataSet[position].commentText;
         viewHolder.buttonEdit.setOnClickListener {
             Toast.makeText(viewHolder.buttonEdit.context,
                 "Button number: $position",Toast.LENGTH_SHORT).show()

@@ -27,6 +27,7 @@
         <activity android:name=".SignUpPage"></activity>
 
         <activity android:name=".HomePage"></activity>
+        <activity android:name=".RestaurantSpecificPage"></activity>
 
     </application>
 
