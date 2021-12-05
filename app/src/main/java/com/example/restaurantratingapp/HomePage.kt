@@ -8,7 +8,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 
-var ratingMap : HashMap<String, Array<Int>> = HashMap<String, Array<Int>> ()
+var ratingMap : HashMap<String, Array<Float>> = HashMap<String, Array<Float>> ()
 
 class HomePage : AppCompatActivity() {
 
@@ -36,7 +36,7 @@ class HomePage : AppCompatActivity() {
         //ratingMap filled with restaurant name as a key and count,rating_average as values
         //It will be used to calculate the average rating in the RestaurantSpecificPage
         for(res in resNames){
-            ratingMap.put(res, arrayOf(0,0))
+            ratingMap.put(res, arrayOf(0f,0f))
         }
 
             resAdapter = RestaurantAdapter(resImages , resNames,this)

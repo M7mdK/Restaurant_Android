@@ -74,8 +74,10 @@ class RestaurantSpecificPage : AppCompatActivity() {
                             }
                             if(restaurant.key.toString() == restaurantName){
                                 restaurant.children.forEach { comment ->
+                                    val rating = comment.children.toList()[0].value
+                                    val commentText = comment.children.toList()[1].value
                                     comments.add(Comment(
-                                        commentText = comment.value.toString(),
+                                        commentText = commentText.toString(),
                                         userId = user.key.toString(),
                                         commentId = comment.key.toString(),
                                         userName = userName
@@ -102,6 +104,7 @@ class RestaurantSpecificPage : AppCompatActivity() {
 
         // init the add comment listener
         initAddComment(userId,restaurantName)
+        initRating(restaurantName)
     }
 
     private fun initAddComment(userId: String?, restaurantName: String?){
@@ -115,19 +118,29 @@ class RestaurantSpecificPage : AppCompatActivity() {
             // add save comment listener
 
             val editText = commentBoxView.findViewById<EditText>(R.id.addCommentText)
+            val ratingBar = commentBoxView.findViewById<RatingBar>(R.id.ratingBar)
             val commentText = editText.text
+
+            var ratingValue:Float = 0F
+            ratingBar.setOnRatingBarChangeListener { ratingBar, currentValue, isChanged ->
+                ratingValue = currentValue
+            }
             commentBoxBuilder.setNegativeButton("Cancel") { dialog, whichButton ->
                 dialog.dismiss()
             }
             commentBoxBuilder.setPositiveButton("Save") { dialog, whichButton ->
-                Toast.makeText(this,"Clicked!! $userId",Toast.LENGTH_SHORT).show()
-                if (userId != null && restaurantName != null && commentText.toString() != "") {
-                    val isCompleted = database.child("users").child(userId)
-                        .child(restaurantName).push().setValue(commentText.toString()).isComplete
 
+                if (userId != null && restaurantName != null && commentText.toString() != "") {
+                    var listReview = ArrayList<Any>()
+                    listReview.add(ratingValue)
+                    listReview.add(commentText.toString())
+                    val isCompleted = database.child("users").child(userId)
+                        .child(restaurantName).push().setValue(listReview).isComplete
                     if(isCompleted){
                         dialog.dismiss()
                     }
+                }else{
+                    Toast.makeText(this,"Something is empty!! $userId",Toast.LENGTH_SHORT).show()
                 }
             }
             //show dialog
@@ -137,4 +150,34 @@ class RestaurantSpecificPage : AppCompatActivity() {
         }
     }
 
+    private fun initRating(restaurantName: String?){
+        val postListener = object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                // Get Post object and use the values to update the UI
+                var totalRating: Float = 0f
+                var countRatings: Int = 0
+                for (snapshot in dataSnapshot.children) {
+                    snapshot.children.forEach { user ->
+
+                        user.children.forEach{ restaurant ->
+                            if(restaurant.key.toString() == restaurantName){
+                                restaurant.children.forEach { comment ->
+                                    val rating = comment.children.toList()[0].value
+                                    countRatings++
+                                    totalRating += rating.toString().toFloat()
+                                }
+                            }
+                        }
+                    }
+                }
+                val restRatingBar: RatingBar = findViewById(R.id.resRatingBar)
+                restRatingBar.rating = totalRating/countRatings
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+                // Getting Post failed, log a message
+            }
+        }
+        database.addValueEventListener(postListener)
+    }
 }
