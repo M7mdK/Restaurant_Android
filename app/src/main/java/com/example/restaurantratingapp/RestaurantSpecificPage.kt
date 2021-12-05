@@ -103,7 +103,12 @@ class RestaurantSpecificPage : AppCompatActivity() {
         database.addValueEventListener(postListener)
 
         // init the add comment listener
-        initAddComment(userId,restaurantName)
+        if(userId != "defUser") {
+            initAddComment(userId, restaurantName)
+        }else{
+            // hide the add review button if guest or not logged in
+            addCommentButton.visibility = Button.INVISIBLE
+        }
         initRating(restaurantName)
     }
 

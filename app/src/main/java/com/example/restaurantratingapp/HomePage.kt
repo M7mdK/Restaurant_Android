@@ -74,7 +74,10 @@ class HomePage : AppCompatActivity() {
             else -> super.onOptionsItemSelected(item)
 
         }
+    }
 
-
+    override fun onBackPressed() {
+        super.onBackPressed()
+        finishAffinity()
     }
 }
