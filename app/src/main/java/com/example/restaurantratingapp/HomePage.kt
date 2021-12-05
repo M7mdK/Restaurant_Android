@@ -70,6 +70,7 @@ class HomePage : AppCompatActivity() {
                 editor.remove("Email")
                 editor.remove("Pass")
                 editor.remove("UserID")
+                editor.commit()
                 Toast.makeText(this, "Logging Out", Toast.LENGTH_SHORT).show()
                 val intent = Intent(this, LoginPage::class.java)
                 startActivity(intent)
