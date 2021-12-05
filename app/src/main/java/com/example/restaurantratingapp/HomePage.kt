@@ -8,6 +8,8 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 
+var ratingMap : HashMap<String, Array<Int>> = HashMap<String, Array<Int>> ()
+
 class HomePage : AppCompatActivity() {
 
     lateinit var resList: RecyclerView
@@ -17,10 +19,10 @@ class HomePage : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.home_page)
 
-            resList = findViewById(R.id.RecyclerRestaurants) as RecyclerView
+        resList = findViewById(R.id.RecyclerRestaurants) as RecyclerView
 
-            val resNames: Array<String> = arrayOf("KFC","Macdonalds","Burger King","Dominos Pizza","Subway","Pizza Hut","Papa","DQ")
-            val resImages: Array<Int> = arrayOf(
+        val resNames: Array<String> = arrayOf("KFC","Macdonalds","Burger King","Dominos Pizza","Subway","Pizza Hut","Papa","DQ")
+        val resImages: Array<Int> = arrayOf(
                 R.drawable.kfc_logo,
                 R.drawable.mac_logo,
                 R.drawable.burger_king_logo,
@@ -29,10 +31,13 @@ class HomePage : AppCompatActivity() {
                 R.drawable.pizza_hut_logo,
                 R.drawable.papa_logo,
                 R.drawable.dq_logo
+        )
 
-
-            )
-
+        //ratingMap filled with restaurant name as a key and count,rating_average as values
+        //It will be used to calculate the average rating in the RestaurantSpecificPage
+        for(res in resNames){
+            ratingMap.put(res, arrayOf(0,0))
+        }
 
             resAdapter = RestaurantAdapter(resImages , resNames,this)
 
