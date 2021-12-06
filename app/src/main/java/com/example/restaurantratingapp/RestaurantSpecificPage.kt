@@ -87,8 +87,6 @@ class RestaurantSpecificPage : AppCompatActivity() {
                         }
                     }
                 }
-
-
                 commentAdapter = CommentAdapter(comments,database,restaurantName,userId)
                 listComments.adapter = commentAdapter
                 listComments.setHasFixedSize(true)
