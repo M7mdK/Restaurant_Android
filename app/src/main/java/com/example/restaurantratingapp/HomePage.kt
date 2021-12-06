@@ -21,7 +21,14 @@ class HomePage : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.home_page)
 
-        setSupportActionBar(findViewById(R.id.toolbar))
+        val sharedPref =  getSharedPreferences(SHARED_PREF, Context.MODE_PRIVATE)
+        var userID = sharedPref.getString("UserID","defUser")
+
+        Toast.makeText(this@HomePage, "Test" + userID , Toast.LENGTH_SHORT).show()
+        if(userID != "defUser" && userID != null){
+            setSupportActionBar(findViewById(R.id.toolbar))
+        }
+
         resList = findViewById(R.id.RecyclerRestaurants) as RecyclerView
 
         val resNames: Array<String> = arrayOf("KFC","Macdonalds","Burger King","Dominos Pizza","Subway","Pizza Hut","Papa","DQ")

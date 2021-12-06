@@ -40,10 +40,10 @@ tools:context=".MainActivity"
             />
 
         <RatingBar
+            android:id="@+id/resRatingBar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/resRatingBar"
-            >
+            android:isIndicator="true">
 
         </RatingBar>
 
